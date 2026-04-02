@@ -1,0 +1,419 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Restaurants - SavoryScout</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg-1: #020617;
+        --bg-2: #0f172a;
+        --bg-3: #111827;
+        --text: #e5e7eb;
+        --muted: #94a3b8;
+        --glass: rgba(15, 23, 42, 0.56);
+        --glass-strong: rgba(15, 23, 42, 0.74);
+        --border: rgba(148, 163, 184, 0.24);
+        --accent-a: #22c55e;
+        --accent-b: #06b6d4;
+        --accent-grad: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+        --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.46);
+        --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.32);
+      }
+
+      body {
+        font-family: "Poppins", system-ui, -apple-system, sans-serif;
+        background:
+          radial-gradient(circle at 10% 15%, rgba(34, 197, 94, 0.14), transparent 34%),
+          radial-gradient(circle at 88% 20%, rgba(6, 182, 212, 0.16), transparent 35%),
+          linear-gradient(155deg, var(--bg-1), var(--bg-2) 54%, var(--bg-3));
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 60px;
+        background: rgba(2, 6, 23, 0.56);
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(14px);
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #f8fafc;
+        text-decoration: none;
+      }
+      .nav-brand i {
+        background: var(--accent-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--muted);
+        font-weight: 500;
+        font-size: 14px;
+        margin-left: 28px;
+        transition: color 0.25s ease;
+      }
+      .nav-links a:hover {
+        color: #f8fafc;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 54px 24px;
+      }
+
+      .form-wrapper {
+        display: flex;
+        gap: 40px;
+        max-width: 1060px;
+        width: 100%;
+        align-items: flex-start;
+      }
+
+      .form-info {
+        flex: 1;
+        background: var(--glass);
+        backdrop-filter: blur(14px);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: var(--shadow-sm);
+      }
+      .form-info h1 {
+        font-size: 34px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 14px;
+      }
+      .form-info h1 span {
+        background: var(--accent-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .form-info p {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 28px;
+      }
+      .tip-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .tip-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 11px;
+        font-size: 14px;
+        color: #cbd5e1;
+        line-height: 1.55;
+      }
+      .tip-list li i {
+        color: #22c55e;
+        margin-top: 3px;
+        flex-shrink: 0;
+      }
+
+      .form-card {
+        background: var(--glass-strong);
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+        backdrop-filter: blur(16px);
+        padding: 38px 34px;
+        width: 430px;
+        flex-shrink: 0;
+      }
+      .form-card h2 {
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .form-card h2 i {
+        background: var(--accent-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .field {
+        margin-bottom: 18px;
+      }
+      .field label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--muted);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.55px;
+      }
+      .input-wrap {
+        position: relative;
+      }
+      .input-wrap i {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9ca3af;
+        font-size: 14px;
+        pointer-events: none;
+      }
+      .input-wrap input,
+      .input-wrap select {
+        width: 100%;
+        padding: 12px 14px 12px 40px;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 12px;
+        font-family: "Poppins", system-ui, sans-serif;
+        font-size: 14px;
+        color: #f1f5f9;
+        background: rgba(15, 23, 42, 0.55);
+        outline: none;
+        transition: border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+        appearance: none;
+      }
+      .input-wrap input:focus,
+      .input-wrap select:focus {
+        border-color: rgba(6, 182, 212, 0.65);
+        box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+        background: rgba(15, 23, 42, 0.8);
+      }
+      .input-wrap input::placeholder {
+        color: #94a3b8;
+      }
+
+      .divider {
+        height: 1px;
+        background: rgba(148, 163, 184, 0.25);
+        margin: 24px 0;
+      }
+
+      .btn-submit {
+        width: 100%;
+        padding: 13px;
+        background: var(--accent-grad);
+        color: #03141d;
+        border: none;
+        border-radius: 999px;
+        font-family: "Poppins", system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        box-shadow: 0 10px 26px rgba(6, 182, 212, 0.24);
+      }
+      .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(34, 197, 94, 0.28);
+      }
+      .btn-submit:active {
+        transform: translateY(0);
+      }
+
+      footer {
+        text-align: center;
+        padding: 22px;
+        color: var(--muted);
+        font-size: 13px;
+        border-top: 1px solid rgba(148, 163, 184, 0.2);
+        background: rgba(2, 6, 23, 0.45);
+      }
+
+      @media (max-width: 920px) {
+        .form-wrapper {
+          flex-direction: column;
+          align-items: center;
+          gap: 22px;
+        }
+        .form-info {
+          width: 100%;
+          max-width: 620px;
+        }
+        .form-card {
+          width: 100%;
+          max-width: 520px;
+        }
+      }
+
+      @media (max-width: 700px) {
+        nav {
+          padding: 16px 20px;
+        }
+        .form-info {
+          display: none;
+        }
+        main {
+          padding: 34px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a class="nav-brand" href="/"
+        ><i class="fa-solid fa-utensils"></i> DineAdvisor</a
+      >
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/recommend">Explore</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="form-wrapper">
+        <!-- Info Panel -->
+        <div class="form-info">
+          <h1>Discover <span>Similar</span><br />Restaurants</h1>
+          <p>
+            Enter the name of a restaurant you enjoy and we'll find the best
+            similar options tailored to your preferences.
+          </p>
+          <ul class="tip-list">
+            <li>
+              <i class="fa-solid fa-circle-check"></i> Use the exact restaurant
+              name from our database
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i> Set your cuisine
+              preference for targeted results
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i> Budget and rating filters
+              help narrow down choices
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i> Results are ranked by
+              rating - best first
+            </li>
+          </ul>
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card">
+          <h2>
+            <i class="fa-solid fa-magnifying-glass"></i> Search Restaurants
+          </h2>
+
+          <form action="/result" method="post">
+            <div class="field">
+              <label>Restaurant Name</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-store"></i>
+                <input
+                  type="text"
+                  name="restaurant_name"
+                  placeholder="e.g. Jalsa, Spice Elephant..."
+                  required
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Cuisine Type</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-bowl-food"></i>
+                <select name="cuisine">
+                  <option value="">Any Cuisine</option>
+                  <option value="north indian">North Indian</option>
+                  <option value="south indian">South Indian</option>
+                  <option value="chinese">Chinese</option>
+                  <option value="mughlai">Mughlai</option>
+                  <option value="italian">Italian</option>
+                  <option value="continental">Continental</option>
+                  <option value="fast food">Fast Food</option>
+                  <option value="biryani">Biryani</option>
+                  <option value="thai">Thai</option>
+                  <option value="seafood">Seafood</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Maximum Budget (&#8377; per person)</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                <select name="budget">
+                  <option value="9999999">Any Budget</option>
+                  <option value="300">Up to &#8377;300</option>
+                  <option value="500">Up to &#8377;500</option>
+                  <option value="800">Up to &#8377;800</option>
+                  <option value="1000">Up to &#8377;1,000</option>
+                  <option value="1500">Up to &#8377;1,500</option>
+                  <option value="2000">Up to &#8377;2,000</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Minimum Rating</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-star"></i>
+                <select name="rating">
+                  <option value="0">Any Rating</option>
+                  <option value="3">3.0 and above</option>
+                  <option value="3.5">3.5 and above</option>
+                  <option value="4">4.0 and above</option>
+                  <option value="4.5">4.5 and above</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <button type="submit" class="btn-submit">
+              <i class="fa-solid fa-sparkles"></i> Get Recommendations
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      © 2026 SavoryScout &nbsp;·&nbsp; Developed by ·&nbsp; Amar Patil
+    </footer>
+  </body>
+</html>

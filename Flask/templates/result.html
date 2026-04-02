@@ -1,0 +1,421 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results - SavoryScout</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg-1: #020617;
+        --bg-2: #0f172a;
+        --bg-3: #111827;
+        --text: #e5e7eb;
+        --muted: #94a3b8;
+        --glass: rgba(15, 23, 42, 0.56);
+        --glass-strong: rgba(15, 23, 42, 0.74);
+        --border: rgba(148, 163, 184, 0.24);
+        --accent-a: #22c55e;
+        --accent-b: #06b6d4;
+        --accent-grad: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+        --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.46);
+        --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.3);
+      }
+
+      body {
+        font-family: "Poppins", system-ui, -apple-system, sans-serif;
+        background:
+          radial-gradient(circle at 12% 14%, rgba(34, 197, 94, 0.14), transparent 34%),
+          radial-gradient(circle at 88% 18%, rgba(6, 182, 212, 0.16), transparent 35%),
+          linear-gradient(160deg, var(--bg-1), var(--bg-2) 53%, var(--bg-3));
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 60px;
+        background: rgba(2, 6, 23, 0.56);
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(14px);
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #f8fafc;
+        text-decoration: none;
+      }
+      .nav-brand i {
+        background: var(--accent-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .nav-links {
+        display: flex;
+        gap: 22px;
+        align-items: center;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--muted);
+        font-weight: 500;
+        font-size: 14px;
+        transition: color 0.25s ease;
+      }
+      .nav-links a:hover {
+        color: #f8fafc;
+      }
+      .nav-cta {
+        background: var(--accent-grad) !important;
+        color: #04131d !important;
+        padding: 8px 18px;
+        border-radius: 999px;
+        font-weight: 700 !important;
+        font-size: 13px !important;
+        box-shadow: 0 8px 22px rgba(6, 182, 212, 0.24);
+        transition: transform 0.24s ease, box-shadow 0.24s ease;
+      }
+      .nav-cta:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 28px rgba(34, 197, 94, 0.28);
+      }
+
+      .results-header {
+        padding: 44px 60px 0;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 22px;
+        transition: color 0.25s ease;
+      }
+      .back-link:hover {
+        color: #f8fafc;
+      }
+
+      .result-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 34px;
+      }
+      .result-meta h1 {
+        font-size: 27px;
+        font-weight: 700;
+      }
+      .result-meta h1 span {
+        background: var(--accent-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .result-count {
+        background: rgba(148, 163, 184, 0.14);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        color: #dbeafe;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 7px 14px;
+        border-radius: 999px;
+        backdrop-filter: blur(10px);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 22px;
+        padding: 0 60px 56px;
+      }
+
+      .card {
+        background: var(--glass);
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        backdrop-filter: blur(14px);
+        padding: 24px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+        transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--accent-grad);
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(6, 182, 212, 0.55);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .card-rank {
+        position: absolute;
+        top: 14px;
+        right: 16px;
+        width: 30px;
+        height: 30px;
+        background: rgba(148, 163, 184, 0.14);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        color: #e2e8f0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .card-name {
+        font-size: 17px;
+        font-weight: 700;
+        color: #f8fafc;
+        padding-right: 36px;
+        line-height: 1.35;
+      }
+
+      .card-cuisine {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: #cbd5e1;
+        background: rgba(148, 163, 184, 0.1);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        padding: 6px 11px;
+        border-radius: 10px;
+      }
+      .card-cuisine i {
+        color: #22c55e;
+        font-size: 12px;
+      }
+
+      .card-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-top: 4px;
+      }
+
+      .rating-badge {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(34, 197, 94, 0.16);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        color: #dcfce7;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 7px 12px;
+        border-radius: 10px;
+        flex: 1;
+      }
+      .rating-badge i {
+        font-size: 12px;
+      }
+
+      .budget-badge {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(6, 182, 212, 0.14);
+        border: 1px solid rgba(6, 182, 212, 0.28);
+        color: #e0f2fe;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 7px 12px;
+        border-radius: 10px;
+        flex: 1;
+      }
+      .budget-badge span {
+        color: #bae6fd;
+        font-weight: 500;
+        font-size: 12px;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 78px 30px;
+      }
+      .empty-state-inner {
+        max-width: 520px;
+        margin: 0 auto;
+        background: var(--glass-strong);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        backdrop-filter: blur(16px);
+        box-shadow: var(--shadow-lg);
+        padding: 42px 30px;
+      }
+      .empty-icon {
+        font-size: 50px;
+        margin-bottom: 18px;
+      }
+      .empty-icon i {
+        background: var(--accent-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .empty-state h2 {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+      .empty-state p {
+        color: var(--muted);
+        font-size: 15px;
+        margin-bottom: 24px;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent-grad);
+        color: #03141d;
+        padding: 12px 24px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        box-shadow: 0 10px 24px rgba(6, 182, 212, 0.24);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(34, 197, 94, 0.28);
+      }
+
+      footer {
+        text-align: center;
+        padding: 22px;
+        color: var(--muted);
+        font-size: 13px;
+        border-top: 1px solid rgba(148, 163, 184, 0.2);
+        margin-top: auto;
+        background: rgba(2, 6, 23, 0.45);
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 16px 20px;
+        }
+        .results-header {
+          padding: 30px 20px 0;
+        }
+        .grid {
+          padding: 0 20px 44px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a class="nav-brand" href="/"
+        ><i class="fa-solid fa-utensils"></i> DineAdvisor</a
+      >
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/recommend" class="nav-cta"
+          ><i class="fa-solid fa-magnifying-glass"></i> New Search</a
+        >
+      </div>
+    </nav>
+
+    <div class="results-header">
+      <a href="/recommend" class="back-link"
+        ><i class="fa-solid fa-arrow-left"></i> Back to Search</a
+      >
+      <div class="result-meta">
+        {% if search_name %}
+        <h1>Restaurants similar to <span>{{ search_name }}</span></h1>
+        {% else %}
+        <h1>Recommended <span>Restaurants</span></h1>
+        {% endif %}
+        <span class="result-count"
+          ><i class="fa-solid fa-list"></i> {{ recommended_restaurants|length }}
+          result{{ 's' if recommended_restaurants|length != 1 }}</span
+        >
+      </div>
+    </div>
+
+    {% if recommended_restaurants %}
+    <div class="grid">
+      {% for r in recommended_restaurants %}
+      <div class="card">
+        <div class="card-rank">{{ loop.index }}</div>
+        <div class="card-name">{{ r.name }}</div>
+        <div class="card-cuisine">
+          <i class="fa-solid fa-bowl-food"></i> {{ r.cuisines | title }}
+        </div>
+        <div class="card-row">
+          <div class="rating-badge">
+            <i class="fa-solid fa-star"></i>
+            {{ "%.1f" | format(r['Mean Rating']) }}
+          </div>
+          <div class="budget-badge">
+            &#8377;{{ "%.0f" | format(r.cost) }} <span>/ person</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <div class="empty-state-inner">
+        <div class="empty-icon"><i class="fa-solid fa-plate-utensils"></i></div>
+        <h2>No Results Found</h2>
+        <p>
+          Try adjusting your filters or searching with a different restaurant
+          name.
+        </p>
+        <a href="/recommend" class="btn-primary"
+          ><i class="fa-solid fa-arrow-left"></i> Try Again</a
+        >
+      </div>
+    </div>
+    {% endif %}
+
+    <footer>
+      © 2026 SavoryScout &nbsp;·&nbsp; Developed by ·&nbsp; Amar Patil
+    </footer>
+  </body>
+</html>
