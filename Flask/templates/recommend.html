@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Find Restaurants - SavoryScout</title>
+    <title>Find Restaurants - SpotMyMeal</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -22,27 +22,28 @@
       }
 
       :root {
-        --bg-1: #020617;
-        --bg-2: #0f172a;
-        --bg-3: #111827;
-        --text: #e5e7eb;
-        --muted: #94a3b8;
-        --glass: rgba(15, 23, 42, 0.56);
-        --glass-strong: rgba(15, 23, 42, 0.74);
-        --border: rgba(148, 163, 184, 0.24);
-        --accent-a: #22c55e;
-        --accent-b: #06b6d4;
-        --accent-grad: linear-gradient(135deg, var(--accent-a), var(--accent-b));
-        --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.46);
-        --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.32);
+        --bg: #eef2f7;
+        --surface: #eef2f7;
+        --text: #1e293b;
+        --muted: #64748b;
+        --primary: #6366f1;
+        --primary-2: #3b82f6;
+        --radius: 22px;
+        --shadow-raised:
+          8px 8px 16px rgba(148, 163, 184, 0.35),
+          -8px -8px 16px rgba(255, 255, 255, 0.88);
+        --shadow-raised-lg:
+          12px 12px 24px rgba(148, 163, 184, 0.34),
+          -12px -12px 24px rgba(255, 255, 255, 0.9);
+        --shadow-pressed:
+          inset 6px 6px 12px rgba(148, 163, 184, 0.28),
+          inset -6px -6px 12px rgba(255, 255, 255, 0.88);
+        --accent-grad: linear-gradient(135deg, var(--primary), var(--primary-2));
       }
 
       body {
         font-family: "Poppins", system-ui, -apple-system, sans-serif;
-        background:
-          radial-gradient(circle at 10% 15%, rgba(34, 197, 94, 0.14), transparent 34%),
-          radial-gradient(circle at 88% 20%, rgba(6, 182, 212, 0.16), transparent 35%),
-          linear-gradient(155deg, var(--bg-1), var(--bg-2) 54%, var(--bg-3));
+        background: radial-gradient(circle at 12% 10%, #f7f9fc, #eef2f7 46%, #e9eff7);
         color: var(--text);
         min-height: 100vh;
         display: flex;
@@ -54,9 +55,9 @@
         justify-content: space-between;
         align-items: center;
         padding: 18px 60px;
-        background: rgba(2, 6, 23, 0.56);
-        border-bottom: 1px solid var(--border);
-        backdrop-filter: blur(14px);
+        background: var(--surface);
+        box-shadow: var(--shadow-raised);
+        border-radius: 0 0 20px 20px;
       }
       .nav-brand {
         display: flex;
@@ -64,14 +65,11 @@
         gap: 10px;
         font-size: 20px;
         font-weight: 700;
-        color: #f8fafc;
+        color: var(--text);
         text-decoration: none;
       }
       .nav-brand i {
-        background: var(--accent-grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: var(--primary);
       }
       .nav-links a {
         text-decoration: none;
@@ -82,7 +80,7 @@
         transition: color 0.25s ease;
       }
       .nav-links a:hover {
-        color: #f8fafc;
+        color: var(--text);
       }
 
       main {
@@ -103,12 +101,10 @@
 
       .form-info {
         flex: 1;
-        background: var(--glass);
-        backdrop-filter: blur(14px);
-        border: 1px solid var(--border);
+        background: var(--surface);
         border-radius: 24px;
         padding: 32px;
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--shadow-raised);
       }
       .form-info h1 {
         font-size: 34px;
@@ -139,21 +135,19 @@
         align-items: flex-start;
         gap: 11px;
         font-size: 14px;
-        color: #cbd5e1;
+        color: var(--muted);
         line-height: 1.55;
       }
       .tip-list li i {
-        color: #22c55e;
+        color: var(--primary);
         margin-top: 3px;
         flex-shrink: 0;
       }
 
       .form-card {
-        background: var(--glass-strong);
+        background: var(--surface);
         border-radius: 24px;
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow-lg);
-        backdrop-filter: blur(16px);
+        box-shadow: var(--shadow-raised-lg);
         padding: 38px 34px;
         width: 430px;
         flex-shrink: 0;
@@ -167,10 +161,7 @@
         gap: 10px;
       }
       .form-card h2 i {
-        background: var(--accent-grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: var(--primary);
       }
 
       .field {
@@ -193,7 +184,7 @@
         left: 14px;
         top: 50%;
         transform: translateY(-50%);
-        color: #9ca3af;
+        color: #64748b;
         font-size: 14px;
         pointer-events: none;
       }
@@ -201,21 +192,23 @@
       .input-wrap select {
         width: 100%;
         padding: 12px 14px 12px 40px;
-        border: 1px solid rgba(148, 163, 184, 0.3);
+        border: none;
         border-radius: 12px;
         font-family: "Poppins", system-ui, sans-serif;
         font-size: 14px;
-        color: #f1f5f9;
-        background: rgba(15, 23, 42, 0.55);
+        color: var(--text);
+        background: var(--surface);
         outline: none;
-        transition: border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+        box-shadow: var(--shadow-pressed);
+        transition: box-shadow 0.24s ease, transform 0.24s ease;
         appearance: none;
       }
       .input-wrap input:focus,
       .input-wrap select:focus {
-        border-color: rgba(6, 182, 212, 0.65);
-        box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
-        background: rgba(15, 23, 42, 0.8);
+        box-shadow:
+          inset 5px 5px 10px rgba(148, 163, 184, 0.27),
+          inset -5px -5px 10px rgba(255, 255, 255, 0.9),
+          0 0 0 2px rgba(99, 102, 241, 0.2);
       }
       .input-wrap input::placeholder {
         color: #94a3b8;
@@ -223,7 +216,7 @@
 
       .divider {
         height: 1px;
-        background: rgba(148, 163, 184, 0.25);
+        background: rgba(148, 163, 184, 0.35);
         margin: 24px 0;
       }
 
@@ -231,26 +224,27 @@
         width: 100%;
         padding: 13px;
         background: var(--accent-grad);
-        color: #03141d;
+        color: #ffffff;
         border: none;
         border-radius: 999px;
         font-family: "Poppins", system-ui, sans-serif;
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 600;
         cursor: pointer;
         transition: transform 0.25s ease, box-shadow 0.25s ease;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        box-shadow: 0 10px 26px rgba(6, 182, 212, 0.24);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.28);
       }
       .btn-submit:hover {
         transform: translateY(-2px);
-        box-shadow: 0 14px 30px rgba(34, 197, 94, 0.28);
+        box-shadow: 0 13px 24px rgba(99, 102, 241, 0.34);
       }
       .btn-submit:active {
         transform: translateY(0);
+        box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
       }
 
       footer {
@@ -258,8 +252,6 @@
         padding: 22px;
         color: var(--muted);
         font-size: 13px;
-        border-top: 1px solid rgba(148, 163, 184, 0.2);
-        background: rgba(2, 6, 23, 0.45);
       }
 
       @media (max-width: 920px) {
@@ -294,7 +286,7 @@
   <body>
     <nav>
       <a class="nav-brand" href="/"
-        ><i class="fa-solid fa-utensils"></i> DineAdvisor</a
+        ><i class="fa-solid fa-utensils"></i> SpotMyMeal</a
       >
       <div class="nav-links">
         <a href="/">Home</a>
@@ -413,7 +405,7 @@
     </main>
 
     <footer>
-      © 2026 SavoryScout &nbsp;·&nbsp; Developed by ·&nbsp; Amar Patil
+      © 2026 SpotMyMeal &nbsp;·&nbsp; Developed by ·&nbsp; Vishwajeet sawant  
     </footer>
   </body>
 </html>

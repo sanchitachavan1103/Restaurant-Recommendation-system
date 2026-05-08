@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SavoryScout - Smart Restaurant Recommendations</title>
+    <title>SpotMyMeal - Smart Restaurant Recommendations</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -22,44 +22,44 @@
       }
 
       :root {
-        --bg-1: #020617;
-        --bg-2: #0f172a;
-        --bg-3: #111827;
-        --text: #e5e7eb;
-        --muted: #94a3b8;
-        --glass: rgba(15, 23, 42, 0.55);
-        --glass-strong: rgba(15, 23, 42, 0.72);
-        --border: rgba(148, 163, 184, 0.22);
-        --accent-a: #22c55e;
-        --accent-b: #06b6d4;
-        --accent-grad: linear-gradient(135deg, var(--accent-a), var(--accent-b));
-        --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.45);
-        --shadow-sm: 0 8px 25px rgba(0, 0, 0, 0.28);
-        --radius: 20px;
+        --bg: #eef2f7;
+        --bg-soft: #f1f5f9;
+        --surface: #eef2f7;
+        --text: #1e293b;
+        --muted: #64748b;
+        --primary: #6366f1;
+        --primary-2: #3b82f6;
+        --radius: 22px;
+        --shadow-raised:
+          8px 8px 16px rgba(148, 163, 184, 0.35),
+          -8px -8px 16px rgba(255, 255, 255, 0.88);
+        --shadow-raised-lg:
+          12px 12px 24px rgba(148, 163, 184, 0.34),
+          -12px -12px 24px rgba(255, 255, 255, 0.9);
+        --shadow-pressed:
+          inset 6px 6px 12px rgba(148, 163, 184, 0.28),
+          inset -6px -6px 12px rgba(255, 255, 255, 0.88);
+        --accent-grad: linear-gradient(135deg, var(--primary), var(--primary-2));
       }
 
       body {
         font-family: "Poppins", system-ui, -apple-system, sans-serif;
-        background:
-          radial-gradient(circle at 12% 15%, rgba(34, 197, 94, 0.14), transparent 35%),
-          radial-gradient(circle at 88% 18%, rgba(6, 182, 212, 0.16), transparent 36%),
-          linear-gradient(160deg, var(--bg-1), var(--bg-2) 55%, var(--bg-3));
+        background: radial-gradient(circle at 12% 10%, #f7f9fc, #eef2f7 46%, #e9eff7);
         color: var(--text);
         min-height: 100vh;
       }
 
-      /* NAV */
       nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 18px 60px;
+        border-radius: 0 0 20px 20px;
+        background: var(--surface);
+        box-shadow: var(--shadow-raised);
         position: sticky;
         top: 0;
         z-index: 100;
-        background: rgba(2, 6, 23, 0.55);
-        backdrop-filter: blur(14px);
-        border-bottom: 1px solid var(--border);
       }
       .nav-brand {
         display: flex;
@@ -67,18 +67,15 @@
         gap: 10px;
         font-size: 20px;
         font-weight: 700;
-        color: #f8fafc;
+        color: var(--text);
         text-decoration: none;
       }
       .nav-brand i {
-        background: var(--accent-grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: var(--primary);
       }
       .nav-links {
         display: flex;
-        gap: 28px;
+        gap: 24px;
         align-items: center;
       }
       .nav-links a {
@@ -89,50 +86,48 @@
         transition: color 0.25s ease;
       }
       .nav-links a:hover {
-        color: #f8fafc;
+        color: var(--text);
       }
       .nav-cta {
+        color: #ffffff !important;
         background: var(--accent-grad);
-        color: #03121d !important;
         padding: 9px 20px;
         border-radius: 999px;
-        font-weight: 700 !important;
-        box-shadow: 0 8px 24px rgba(6, 182, 212, 0.25);
+        font-weight: 600 !important;
+        box-shadow: 0 8px 18px rgba(99, 102, 241, 0.32);
         transition: transform 0.25s ease, box-shadow 0.25s ease;
       }
       .nav-cta:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 12px 28px rgba(34, 197, 94, 0.24);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 20px rgba(99, 102, 241, 0.35);
       }
 
-      /* HERO */
       .hero {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding: 90px 24px 56px;
+        padding: 88px 24px 56px;
       }
       .hero-panel {
         width: min(760px, 100%);
-        background: var(--glass);
-        backdrop-filter: blur(18px);
-        border: 1px solid var(--border);
+        background: var(--surface);
         border-radius: 28px;
         padding: 42px 28px;
-        box-shadow: var(--shadow-lg);
+        box-shadow: var(--shadow-raised-lg);
       }
       .hero-badge {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(148, 163, 184, 0.14);
-        color: #cbd5e1;
+        background: var(--surface);
+        color: var(--muted);
         font-size: 12px;
         font-weight: 600;
-        padding: 7px 16px;
+        padding: 8px 16px;
         border-radius: 999px;
+        box-shadow: var(--shadow-pressed);
         margin-bottom: 24px;
       }
       .hero h1 {
@@ -162,63 +157,66 @@
       }
       .btn-primary {
         background: var(--accent-grad);
-        color: #04141d;
+        color: #ffffff;
         padding: 13px 30px;
         border-radius: 999px;
-        font-weight: 700;
+        font-weight: 600;
         font-size: 14px;
         text-decoration: none;
         transition: transform 0.25s ease, box-shadow 0.25s ease;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        box-shadow: 0 10px 24px rgba(6, 182, 212, 0.25);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.28);
       }
       .btn-primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 16px 30px rgba(34, 197, 94, 0.3);
+        box-shadow: 0 13px 24px rgba(99, 102, 241, 0.34);
+      }
+      .btn-primary:active {
+        transform: translateY(0);
       }
       .btn-outline {
-        border: 1px solid rgba(148, 163, 184, 0.35);
-        color: #e2e8f0;
+        color: var(--text);
         padding: 12px 26px;
         border-radius: 999px;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 14px;
         text-decoration: none;
-        background: rgba(15, 23, 42, 0.35);
-        transition: all 0.25s ease;
+        background: var(--surface);
+        box-shadow: var(--shadow-raised);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
       }
       .btn-outline:hover {
-        border-color: rgba(6, 182, 212, 0.5);
-        background: rgba(6, 182, 212, 0.12);
+        transform: translateY(-2px);
+      }
+      .btn-outline:active {
+        box-shadow: var(--shadow-pressed);
       }
 
-      /* STATS */
       .stats-row {
         display: flex;
         justify-content: center;
-        gap: 26px;
-        padding: 20px 24px 56px;
+        gap: 20px;
+        padding: 18px 24px 56px;
         flex-wrap: wrap;
       }
       .stat {
         min-width: 170px;
         text-align: center;
-        background: var(--glass);
-        border: 1px solid var(--border);
-        border-radius: 16px;
+        background: var(--surface);
+        border-radius: 18px;
         padding: 16px 20px;
-        backdrop-filter: blur(12px);
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--shadow-raised);
+        transition: transform 0.25s ease;
+      }
+      .stat:hover {
+        transform: translateY(-2px);
       }
       .stat-num {
         font-size: 26px;
         font-weight: 700;
-        background: var(--accent-grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: var(--primary);
       }
       .stat-label {
         font-size: 12px;
@@ -226,7 +224,6 @@
         margin-top: 3px;
       }
 
-      /* FEATURES */
       .section {
         padding: 30px 24px 20px;
       }
@@ -250,36 +247,29 @@
         margin: 0 auto;
       }
       .feature-card {
-        background: var(--glass);
-        border: 1px solid var(--border);
+        background: var(--surface);
         padding: 30px 24px;
         border-radius: var(--radius);
-        backdrop-filter: blur(14px);
-        box-shadow: var(--shadow-sm);
-        transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+        box-shadow: var(--shadow-raised);
+        transition: transform 0.25s ease;
       }
       .feature-card:hover {
-        transform: translateY(-6px);
-        border-color: rgba(6, 182, 212, 0.5);
-        box-shadow: var(--shadow-lg);
+        transform: translateY(-5px);
       }
       .feature-icon {
         width: 54px;
         height: 54px;
-        background: rgba(148, 163, 184, 0.16);
-        border: 1px solid rgba(148, 163, 184, 0.26);
+        background: var(--surface);
         border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 16px;
         font-size: 21px;
+        box-shadow: var(--shadow-pressed);
       }
       .feature-icon i {
-        background: var(--accent-grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: var(--primary);
       }
       .feature-card h3 {
         font-size: 17px;
@@ -292,46 +282,45 @@
         line-height: 1.65;
       }
 
-      /* CTA */
       .cta-strip {
         max-width: 1040px;
         margin: 26px auto 60px;
-        background: linear-gradient(130deg, rgba(34, 197, 94, 0.22), rgba(6, 182, 212, 0.2));
-        border: 1px solid rgba(148, 163, 184, 0.28);
+        background: var(--surface);
         border-radius: 24px;
-        backdrop-filter: blur(14px);
         padding: 46px 40px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 28px;
         flex-wrap: wrap;
-        box-shadow: var(--shadow-lg);
+        box-shadow: var(--shadow-raised-lg);
       }
       .cta-strip h2 {
         font-size: 28px;
-        color: #f8fafc;
+        color: var(--text);
         font-weight: 700;
       }
       .cta-strip p {
-        color: #cbd5e1;
+        color: var(--muted);
         margin-top: 6px;
         font-size: 14px;
       }
       .btn-white {
-        background: #0b1220;
-        color: #e5e7eb;
-        border: 1px solid rgba(148, 163, 184, 0.4);
+        background: var(--surface);
+        color: var(--text);
         padding: 13px 26px;
         border-radius: 999px;
         font-weight: 600;
         font-size: 14px;
         text-decoration: none;
-        transition: all 0.25s ease;
+        box-shadow: var(--shadow-raised);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
       }
       .btn-white:hover {
-        border-color: rgba(6, 182, 212, 0.5);
-        background: rgba(6, 182, 212, 0.12);
+        transform: translateY(-2px);
+      }
+      .btn-white:active {
+        box-shadow: var(--shadow-pressed);
       }
 
       footer {
@@ -339,8 +328,6 @@
         padding: 24px;
         color: var(--muted);
         font-size: 13px;
-        border-top: 1px solid rgba(148, 163, 184, 0.2);
-        background: rgba(2, 6, 23, 0.45);
       }
 
       @media (max-width: 768px) {
@@ -366,7 +353,7 @@
   <body>
     <nav>
       <a class="nav-brand" href="/"
-        ><i class="fa-solid fa-utensils"></i> DineAdvisor</a
+        ><i class="fa-solid fa-utensils"></i> SpotMyMeal</a
       >
       <div class="nav-links">
         <a href="/">Home</a>
@@ -415,7 +402,7 @@
     </div>
 
     <section class="section" id="features">
-      <div class="section-title">Why Use DineAdvisor?</div>
+      <div class="section-title">Why Use SavoryScout?</div>
       <div class="section-sub">Smart filters, smart results - every time.</div>
       <div class="features">
         <div class="feature-card">
@@ -464,7 +451,7 @@
     </div>
 
     <footer>
-      © 2026 SavoryScout &nbsp;·&nbsp; Developed By ·&nbsp; Amar Patil
+      © 2026 SpotMyMeal &nbsp;·&nbsp; Developed By ·&nbsp; Vishwajeet sawant  
     </footer>
   </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>No Results Found - SavoryScout</title>
+    <title>No Results Found - SpotMyMeal</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -22,27 +22,27 @@
       }
 
       :root {
-        --bg-1: #020617;
-        --bg-2: #0f172a;
-        --bg-3: #111827;
-        --text: #e5e7eb;
-        --muted: #94a3b8;
-        --glass: rgba(15, 23, 42, 0.58);
-        --glass-strong: rgba(15, 23, 42, 0.76);
-        --border: rgba(148, 163, 184, 0.25);
-        --accent-a: #22c55e;
-        --accent-b: #06b6d4;
-        --accent-grad: linear-gradient(135deg, var(--accent-a), var(--accent-b));
-        --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.46);
-        --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.3);
+        --bg: #eef2f7;
+        --surface: #eef2f7;
+        --text: #1e293b;
+        --muted: #64748b;
+        --primary: #6366f1;
+        --primary-2: #3b82f6;
+        --shadow-raised:
+          8px 8px 16px rgba(148, 163, 184, 0.35),
+          -8px -8px 16px rgba(255, 255, 255, 0.88);
+        --shadow-raised-lg:
+          12px 12px 24px rgba(148, 163, 184, 0.34),
+          -12px -12px 24px rgba(255, 255, 255, 0.9);
+        --shadow-pressed:
+          inset 6px 6px 12px rgba(148, 163, 184, 0.28),
+          inset -6px -6px 12px rgba(255, 255, 255, 0.88);
+        --accent-grad: linear-gradient(135deg, var(--primary), var(--primary-2));
       }
 
       body {
         font-family: "Poppins", system-ui, -apple-system, sans-serif;
-        background:
-          radial-gradient(circle at 12% 15%, rgba(34, 197, 94, 0.14), transparent 34%),
-          radial-gradient(circle at 88% 18%, rgba(6, 182, 212, 0.16), transparent 35%),
-          linear-gradient(160deg, var(--bg-1), var(--bg-2) 52%, var(--bg-3));
+        background: radial-gradient(circle at 12% 10%, #f7f9fc, #eef2f7 46%, #e9eff7);
         color: var(--text);
         min-height: 100vh;
         display: flex;
@@ -54,9 +54,9 @@
         justify-content: space-between;
         align-items: center;
         padding: 18px 60px;
-        background: rgba(2, 6, 23, 0.56);
-        border-bottom: 1px solid var(--border);
-        backdrop-filter: blur(14px);
+        background: var(--surface);
+        box-shadow: var(--shadow-raised);
+        border-radius: 0 0 20px 20px;
       }
       .nav-brand {
         display: flex;
@@ -64,14 +64,11 @@
         gap: 10px;
         font-size: 20px;
         font-weight: 700;
-        color: #f8fafc;
+        color: var(--text);
         text-decoration: none;
       }
       .nav-brand i {
-        background: var(--accent-grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: var(--primary);
       }
       .nav-links a {
         text-decoration: none;
@@ -82,7 +79,7 @@
         transition: color 0.24s ease;
       }
       .nav-links a:hover {
-        color: #f8fafc;
+        color: var(--text);
       }
 
       .page-body {
@@ -94,11 +91,9 @@
       }
 
       .error-card {
-        background: var(--glass-strong);
+        background: var(--surface);
         border-radius: 24px;
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow-lg);
-        backdrop-filter: blur(16px);
+        box-shadow: var(--shadow-raised-lg);
         padding: 54px 46px;
         max-width: 560px;
         width: 100%;
@@ -119,20 +114,17 @@
       .error-icon {
         width: 78px;
         height: 78px;
-        background: rgba(148, 163, 184, 0.14);
-        border: 1px solid rgba(148, 163, 184, 0.26);
+        background: var(--surface);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 24px;
+        box-shadow: var(--shadow-pressed);
       }
       .error-icon i {
         font-size: 31px;
-        background: var(--accent-grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: var(--primary);
       }
 
       .error-card h1 {
@@ -143,13 +135,13 @@
 
       .error-message {
         font-size: 15px;
-        color: #cbd5e1;
+        color: var(--muted);
         line-height: 1.7;
         margin-bottom: 32px;
-        background: rgba(148, 163, 184, 0.1);
-        border: 1px solid rgba(148, 163, 184, 0.25);
+        background: var(--surface);
         padding: 14px 16px;
         border-radius: 12px;
+        box-shadow: var(--shadow-pressed);
       }
 
       .btn-group {
@@ -164,42 +156,47 @@
         align-items: center;
         gap: 8px;
         background: var(--accent-grad);
-        color: #03141d;
+        color: #ffffff;
         padding: 12px 24px;
         border-radius: 999px;
-        font-weight: 700;
+        font-weight: 600;
         font-size: 14px;
         text-decoration: none;
         transition: transform 0.25s ease, box-shadow 0.25s ease;
-        box-shadow: 0 10px 24px rgba(6, 182, 212, 0.24);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.28);
       }
       .btn-primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 14px 30px rgba(34, 197, 94, 0.28);
+        box-shadow: 0 13px 24px rgba(99, 102, 241, 0.34);
+      }
+      .btn-primary:active {
+        transform: translateY(0);
       }
 
       .btn-outline {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid rgba(148, 163, 184, 0.4);
-        color: #e2e8f0;
+        color: var(--text);
         padding: 11px 22px;
         border-radius: 999px;
         font-weight: 600;
         font-size: 14px;
         text-decoration: none;
-        background: rgba(15, 23, 42, 0.34);
-        transition: all 0.24s ease;
+        background: var(--surface);
+        box-shadow: var(--shadow-raised);
+        transition: transform 0.24s ease, box-shadow 0.24s ease;
       }
       .btn-outline:hover {
-        border-color: rgba(6, 182, 212, 0.55);
-        background: rgba(6, 182, 212, 0.12);
+        transform: translateY(-2px);
+      }
+      .btn-outline:active {
+        box-shadow: var(--shadow-pressed);
       }
 
       .tips {
         margin-top: 32px;
-        border-top: 1px solid rgba(148, 163, 184, 0.22);
+        border-top: 1px solid rgba(148, 163, 184, 0.35);
         padding-top: 24px;
         text-align: left;
       }
@@ -222,11 +219,11 @@
         align-items: flex-start;
         gap: 10px;
         font-size: 13px;
-        color: #cbd5e1;
+        color: var(--muted);
         line-height: 1.5;
       }
       .tips li i {
-        color: #22c55e;
+        color: var(--primary);
         margin-top: 2px;
         flex-shrink: 0;
       }
@@ -236,8 +233,6 @@
         padding: 22px;
         color: var(--muted);
         font-size: 13px;
-        border-top: 1px solid rgba(148, 163, 184, 0.2);
-        background: rgba(2, 6, 23, 0.45);
       }
 
       @media (max-width: 700px) {
@@ -253,7 +248,7 @@
   <body>
     <nav>
       <a class="nav-brand" href="/"
-        ><i class="fa-solid fa-utensils"></i> DineAdvisor</a
+        ><i class="fa-solid fa-utensils"></i> SpotMyMeal</a
       >
       <div class="nav-links">
         <a href="/">Home</a>
@@ -305,7 +300,6 @@
     </div>
 
     <footer>
-      © 2026 SavoryScout &nbsp;·&nbsp; Developed by ·&nbsp; Amar Patil
-    </footer>
+      © 2026 SpotMyMeal &nbsp;·&nbsp; Developed by ·&nbsp; Vishwajeet sawant    </footer>
   </body>
 </html>
